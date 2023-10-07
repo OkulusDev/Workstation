@@ -1,0 +1,19 @@
+#!/bin/sh
+
+picom -b --config=/dev/null --inactive-dim=0.11 --inactive-opacity 0.99
+feh --bg-fill ~/Pictures/wat.jpg 
+setxkbmap -layout 'us,ru' -option 'grp:alt_shift_toggle,grp_led:scroll,compose:caps' &
+
+# Statusbar loop
+while true; do
+    ubar
+    sleep 1s    # Update time every second
+done &
+
+# relaunch DWM
+while true; do
+    # Log stderror to a file 
+    dwm 2> ~/.dwm.log
+    # No error logging
+    #dwm >/dev/null 2>&1
+done
